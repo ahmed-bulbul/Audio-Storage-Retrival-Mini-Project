@@ -56,6 +56,8 @@ Metrics Endpoint: http://localhost:8080/actuator/metrics
 
 ### Upload audio
 This project supports uploading audio files in MP3, WAV, and OGG formats. To upload audio files, you can use the following command:
+When upload mp3 and ogg files, then it converts to wav format and saves to database.
+Then retrieve audio files user requested format.
 example audio files you can use for conversion: https://drive.google.com/drive/folders/1tN_0H6Sx6SiT1nZp5pm4mOBtYdxy69lc?usp=sharing
 
 ### Postman curl
