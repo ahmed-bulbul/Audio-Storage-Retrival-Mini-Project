@@ -1,9 +1,8 @@
 # Use a base image with OpenJDK
 FROM openjdk:17-jdk-slim
+EXPOSE 8080
 
 # Add the Spring Boot jar file
-ARG JAR_FILE=target/*.jar
-COPY ${JAR_FILE} app.jar
-
+ADD target/audio-storage-app.jar audio-storage-app.jar
 # Run the application
-ENTRYPOINT ["java", "-jar", "/app.jar"]
+ENTRYPOINT ["java", "-jar", "/audio-storage-app.jar"]

@@ -14,9 +14,9 @@ services:
       - postgres_data:/var/lib/postgresql/data
       - ./db-scripts:/docker-entrypoint-initdb.d  # Mounting the init scripts
 
-  spring-boot-app:
+  audio-storage-app:
     build: .
-    container_name: spring-boot-app
+    container_name: audio-storage-app
     depends_on:
       - postgres
     environment:
