@@ -48,6 +48,11 @@ Once the application is running, you can access it at the following URL:
 ```bash 
 http://127.0.0.1:8080
 ```
+## Application health and metrics
+```
+Health Endpoint: http://localhost:8080/actuator/health
+Metrics Endpoint: http://localhost:8080/actuator/metrics
+```
 
 ### Upload audio
 example audio files you can use for conversion: https://drive.google.com/drive/folders/1tN_0H6Sx6SiT1nZp5pm4mOBtYdxy69lc?usp=sharing
