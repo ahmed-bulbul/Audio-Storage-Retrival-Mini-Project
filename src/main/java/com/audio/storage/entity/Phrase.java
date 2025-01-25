@@ -30,6 +30,10 @@ public class Phrase {
         this.text = text;
     }
 
+    public Phrase(String text) {
+        this.text = text;
+    }
+
     public String getText() {
         return text;
     }
