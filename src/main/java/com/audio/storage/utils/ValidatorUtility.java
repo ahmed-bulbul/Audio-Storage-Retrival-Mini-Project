@@ -15,7 +15,7 @@ public class ValidatorUtility {
      * @return true if the format is supported, false otherwise
      */
     public static boolean isInvalidFormat(String format) {
-        String[] supportedFormats = {"mp3", "ogg", "aac", "flac"};
+        String[] supportedFormats = {"mp3", "ogg"};
         return Arrays.stream(supportedFormats).noneMatch(format::equalsIgnoreCase);
     }
 
@@ -29,8 +29,6 @@ public class ValidatorUtility {
         return switch (format.toLowerCase()) {
             case "mp3" -> "mp3";
             case "ogg" -> "ogg";
-            case "aac" -> "aac";
-            case "flac" -> "flac";
             default -> throw new IllegalArgumentException("Unsupported format: " + format);
         };
     }
