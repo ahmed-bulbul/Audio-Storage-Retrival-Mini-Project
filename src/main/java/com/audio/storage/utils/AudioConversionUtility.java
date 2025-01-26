@@ -8,9 +8,10 @@ import java.io.File;
 import java.io.IOException;
 
 import org.apache.commons.io.FilenameUtils;
+
+import java.io.UnsupportedEncodingException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.Arrays;
 
 /**
  * Utility class for audio file conversion and handling.
@@ -102,12 +103,12 @@ public class AudioConversionUtility {
      * @throws EncoderException if the encoding process fails
      */
     public static File convertToFormat(File wavFile, String format) throws IOException, EncoderException {
-        if (isInvalidFormat(format)) {
-            throw new IllegalArgumentException("Unsupported audio format: " + format);
+        if (ValidatorUtility.isInvalidFormat(format)) {
+            throw new UnsupportedEncodingException("Unsupported audio format: " + format);
         }
 
-        String extension = getFileExtension(format);
-        String codec = getCodec(format);
+        String extension = ValidatorUtility.getValidFileExtension(format);
+        String codec = ValidatorUtility.getValidCodec(format);
 
         File convertedFile = File.createTempFile("converted_audio", "." + extension);
 
@@ -125,47 +126,6 @@ public class AudioConversionUtility {
         return convertedFile;
     }
 
-    /**
-     * Validates if the provided audio format is supported.
-     *
-     * @param format the audio format to validate
-     * @return true if the format is supported, false otherwise
-     */
-    public static boolean isInvalidFormat(String format) {
-        String[] supportedFormats = {"mp3", "ogg", "aac", "flac"};
-        return Arrays.stream(supportedFormats).noneMatch(format::equalsIgnoreCase);
-    }
-
-    /**
-     * Retrieves the file extension for the specified audio format.
-     *
-     * @param format the audio format
-     * @return the file extension
-     */
-    private static String getFileExtension(String format) {
-        return switch (format.toLowerCase()) {
-            case "mp3" -> "mp3";
-            case "ogg" -> "ogg";
-            case "aac" -> "aac";
-            case "flac" -> "flac";
-            default -> throw new IllegalArgumentException("Unsupported format: " + format);
-        };
-    }
-
-    /**
-     * Retrieves the codec for the specified audio format.
-     *
-     * @param format the audio format
-     * @return the codec
-     */
-    private static String getCodec(String format) {
-        return switch (format.toLowerCase()) {
-            case "mp3" -> "libmp3lame";
-            case "ogg" -> "libvorbis";
-            case "flac" -> "flac";
-            default -> throw new IllegalArgumentException("Unsupported format: " + format);
-        };
-    }
 
     /**
      * Retrieves the file type (extension) from a MultipartFile.

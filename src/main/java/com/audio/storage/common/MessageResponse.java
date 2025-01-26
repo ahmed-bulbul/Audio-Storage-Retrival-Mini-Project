@@ -1,7 +1,5 @@
 package com.audio.storage.common;
 
-import org.springframework.core.io.Resource;
-
 public class MessageResponse {
     private String message;
 

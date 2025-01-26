@@ -70,3 +70,7 @@ curl --location 'http://127.0.0.1:8080/audio/user/1/phrase/1' \
 ```
 curl --location 'http://localhost:8080/audio/user/1/phrase/1/mp3'
 ```
+
+### Swagger UI
+http://localhost:8080/swagger-ui/index.html
+

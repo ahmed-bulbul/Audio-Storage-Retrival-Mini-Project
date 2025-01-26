@@ -3,6 +3,7 @@ package com.audio.storage.controller;
 import com.audio.storage.common.MessageResponse;
 import com.audio.storage.dto.PhraseRequestDto;
 import com.audio.storage.service.PhraseService;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,7 +20,7 @@ public class PhraseController {
         this.phraseService = phraseService;
     }
 
-    //create
+    @Operation(summary = "Create phrase")
     @PostMapping
     public ResponseEntity<MessageResponse> create(@RequestBody PhraseRequestDto requestDto){
         return ResponseEntity.ok(new MessageResponse(phraseService.create(requestDto)));

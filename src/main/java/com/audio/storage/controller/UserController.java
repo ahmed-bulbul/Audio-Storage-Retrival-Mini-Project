@@ -4,6 +4,7 @@ package com.audio.storage.controller;
 import com.audio.storage.common.MessageResponse;
 import com.audio.storage.dto.UserRequestDto;
 import com.audio.storage.service.UserService;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,7 +22,7 @@ public class UserController {
         this.userService = userService;
     }
 
-    //create user
+    @Operation(summary = "Create user")
     @PostMapping
     public ResponseEntity<MessageResponse> create(@RequestBody UserRequestDto requestDto){
         return ResponseEntity.ok(new MessageResponse(userService.create(requestDto)));
