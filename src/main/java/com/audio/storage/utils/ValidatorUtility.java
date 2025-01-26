@@ -43,7 +43,6 @@ public class ValidatorUtility {
         return switch (format.toLowerCase()) {
             case "mp3" -> "libmp3lame";
             case "ogg" -> "libvorbis";
-            case "flac" -> "flac";
             default -> throw new IllegalArgumentException("Unsupported format: " + format);
         };
     }
