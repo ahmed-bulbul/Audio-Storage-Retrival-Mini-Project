@@ -1,6 +1,7 @@
 package com.audio.storage.utils;
 
 
+import com.audio.storage.exception.UnsupportedFormatException;
 import org.springframework.web.multipart.MultipartFile;
 import ws.schild.jave.*;
 
@@ -102,9 +103,9 @@ public class AudioConversionUtility {
      * @throws IOException      if an I/O error occurs
      * @throws EncoderException if the encoding process fails
      */
-    public static File convertToFormat(File wavFile, String format) throws IOException, EncoderException {
+    public static File convertToFormat(File wavFile, String format) throws IOException, EncoderException, UnsupportedFormatException {
         if (ValidatorUtility.isInvalidFormat(format)) {
-            throw new UnsupportedEncodingException("Unsupported audio format: " + format);
+            throw new UnsupportedFormatException("Unsupported audio format: " + format);
         }
 
         String extension = ValidatorUtility.getValidFileExtension(format);
